@@ -1,0 +1,98 @@
+<% include partials/header.ejs %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <section class="header justify-content-center">
+        <h1>Todo</h1>
+      </section>
+      <section class="newItem">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="inner">
+              <a class="btn btn-success" role="button" data-toggle="modal" data-target="#exampleModal">+</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <hr>
+      <section class="content justify-content-center">
+        <div class="row">
+          <div class="col-md-4 todo">
+            <h5>To Do</h5>
+            <div class="section-content">
+              <ul>
+                <% for(let item in data) { %>
+                  <% if(data[item].state == "todo") { %>
+                    <li><%= data[item].name %><span class="right"><a href="#" class="delete"><i class="fa fa-times" aria-hidden="true"></i></a><a href="#" id="toInprogress"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span></li>
+                  <% } %>
+                <% } %>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-4 inprogress">
+            <h5>In Progress</h5>
+            <div class="section-content">
+              <ul>
+                <% for(let item in data) { %>
+                  <% if(data[item].state == "inprogress") { %>
+                    <li><span class="left"><a href="#" id="toTodo"><i class="fa fa-arrow-left" aria-hidden="true"></i></a></span><%= data[item].name %><span class="right"><a href="#" class="delete"><i class="fa fa-times" aria-hidden="true"></i></a><a href="#" id="toDone"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span></li>
+                  <% } %>
+                <% } %>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-4 done">
+            <h5>Done</h5>
+            <div class="section-content">
+              <ul>
+                <% for(let item in data) { %>
+                  <% if(data[item].state == "done") { %>
+                    <li><span class="left"><a href="#" id="toInprogress"><i class="fa fa-arrow-left" aria-hidden="true"></i></a></span><%= data[item].name %><span class="right"><a href="#" class="delete"><i class="fa fa-times" aria-hidden="true"></i></a></span</li>
+                  <% } %>
+                <% } %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New ToDo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/" method="POST">
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Todo:</label>
+              <input type="text" class="form-control" id="newTodo" name="name">
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Message:</label>
+              <select name="state">
+                  <option value="todo">To Do</option>
+                  <option value="inprogress">In Progress</option>
+                  <option value="done">Done</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+              <div class="center">
+                <button type="submit" class="btn btn-primary">Add</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<% include partials/footer.ejs %>
+  

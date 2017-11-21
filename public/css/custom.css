@@ -1,0 +1,75 @@
+
+.header {
+  display: flex;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.content>div>div>h5 {
+  text-align: center;
+  border: 1px solid black;
+}
+
+.section-content>ul>li {
+  padding: 5px;
+  font-size: 13px;
+}
+
+.todo>.section-content>ul>li {
+  margin: 1px;
+  color: white;
+  background: red;
+}
+
+.inprogress>.section-content>ul>li {
+  margin: 1px;
+  background: blue;
+  color: white;
+}
+
+.done>.section-content>ul>li {
+  margin: 1px;
+  background: green;
+  color: white;
+}
+
+.fa-arrow-left, .fa-arrow-right, .fa-times {
+  font-size: 20px;
+}
+
+.fa-arrow-left:before {
+  color: red;
+}
+
+.right {
+  float: right;
+}
+
+.left {
+  margin-right: 10px;
+  float: left;
+}
+
+.fa {
+  color: white!important;
+}
+
+.inner {
+  text-align: center;
+}
+
+.delete {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.center {
+  text-align: center;
+}
+
+.modal-footer {
+  display: inline;
+}
